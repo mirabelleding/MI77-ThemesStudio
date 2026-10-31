@@ -1,7 +1,12 @@
-# MI77-Themes
-
+# MI77-ThemesStudio
 A collection of themes and configurations for development environments, by MI77-LAB.
 
-- **[VS Code](./vscode/)** — Visual Studio Code themes.
-- **[Terminal](./terminal/)** — Terminal prompts  color configurations for Bash.
-  - **[MI77 Terminal Studio](https://mirabelleding.github.io/MI77-Themes/terminal/studio/)** — An interactive tool for customizing Bash prompts with live effect previews and generate ready-to-use configurations.
+### [Launch Studio](https://mirabelleding.github.io/MI77-ThemesStudio/terminal/)
+An interactive tool for customizing development environments with live effect previews, configurable themes, and ready-to-use configurations.
+
+Currently supports Bash terminal prompts, with VS Code customization coming soon.
+
+---
+### Documentation
+  - **[VS Code](./vscode/)** — Editor color customization, semantic tokens, and TextMate scopes.
+  - **[Terminal](./terminal/)** — Bash prompt configuration, ANSI color sequences, and shell variables.
