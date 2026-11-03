@@ -2,9 +2,10 @@
 A collection of themes and configurations for development environments, by MI77-LAB.
 
 ### [Launch Studio](https://mirabelleding.github.io/MI77-ThemesStudio/terminal/)
-An interactive tool for customizing development environments with live effect previews, configurable themes, and ready-to-use configurations.
 
-Currently supports Bash terminal prompts, with VS Code customization coming soon.
+A configuration studio for customizing development environments, with real-time previews, configurable appearance, and exportable settings.
+
+Supports Bash terminal prompts and VS Code editor themes.
 
 ---
 ### Documentation

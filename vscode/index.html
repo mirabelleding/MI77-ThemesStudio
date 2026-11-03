@@ -1,0 +1,1609 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0e1016">
+  <title>MI77-ThemesStudio</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0e1016;
+      color: #edeef4;
+      font-synthesis: none
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(ellipse 80% 42% at 15% -12%, #37264977, transparent), radial-gradient(ellipse 65% 48% at 100% 0%, #1f314354, transparent), #0e1016
+    }
+
+    button,
+    input,
+    select {
+      font: inherit
+    }
+
+    button {
+      cursor: pointer
+    }
+
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 2px solid #cda9fa;
+      outline-offset: 2px
+    }
+
+    a {
+      color: #d3baff;
+      text-decoration: none
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    .shell {
+      max-width: 1370px;
+      width: calc(100% - 60px);
+      margin: auto;
+      padding-bottom: 55px
+    }
+
+    .topbar {
+      height: 78px;
+      border-bottom: 1px solid #ffffff12;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing: -.3px
+    }
+
+    .mark {
+      height: 32px;
+      padding: 0 12px;
+      white-space: nowrap;
+      display: grid;
+      place-items: center;
+      border-radius: 9px;
+      color: #17111f;
+      background: linear-gradient(145deg, #e4c5f6, #ffaacb);
+      font-size: 11px;
+      font-weight: 900
+    }
+
+    .brand small {
+      font-weight: 450;
+      color: #a7a8ba;
+      letter-spacing: 0;
+      margin-left: 4px
+    }
+
+    .studios {
+      position: relative
+    }
+
+    .studio-menu {
+      border: 1px solid #ffffff31;
+      background: #171a24;
+      color: #e9e1f1;
+      border-radius: 99px;
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 650;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .studio-menu:hover {
+      background: #252736
+    }
+
+    .dropdown {
+      position: absolute;
+      z-index: 20;
+      right: 0;
+      top: calc(100% + 8px);
+      width: 210px;
+      padding: 7px;
+      border: 1px solid #ffffff27;
+      border-radius: 11px;
+      background: #222530;
+      box-shadow: 0 12px 32px #0009
+    }
+
+    .dropdown[hidden] {
+      display: none
+    }
+
+    .dropdown a,
+    .dropdown span {
+      display: block;
+      padding: 9px 10px;
+      border-radius: 7px;
+      font-size: 12px
+    }
+
+    .dropdown .current {
+      background: #453452;
+      color: #f0e3fa
+    }
+
+    .dropdown a:hover {
+      background: #383341;
+      text-decoration: none
+    }
+
+    .hero {
+      padding: 52px 0 32px
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: .21em;
+      color: #cba5f1;
+      font-weight: 750;
+      margin: 0 0 14px;
+      text-transform: uppercase
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 59px);
+      letter-spacing: -.053em;
+      line-height: 1.12;
+      margin: 0;
+      font-weight: 760
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, #cfa8ff, #ffaed6);
+      background-clip: text;
+      color: transparent
+    }
+
+    .subtitle {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #a9a9ba;
+      max-width: 590px;
+      margin: 17px 0 15px
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.56fr) minmax(310px, .86fr);
+      gap: 20px;
+      align-items: start
+    }
+
+    .stack {
+      display: grid;
+      gap: 20px;
+      min-width: 0
+    }
+
+    .panel {
+      background: #171a23ed;
+      border: 1px solid #ffffff19;
+      border-radius: 16px;
+      box-shadow: 0 12px 40px #00000018;
+      overflow: hidden
+    }
+
+    .pad {
+      padding: 22px
+    }
+
+    .panel-heading {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px
+    }
+
+    .panel-heading h2 {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -.02em
+    }
+
+    .muted {
+      color: #969bad;
+      font-size: 11px
+    }
+
+    .pill {
+      font-size: 10px;
+      color: #d5b3f4;
+      background: #2e253c;
+      border: 1px solid #6d557e;
+      border-radius: 40px;
+      padding: 5px 9px
+    }
+
+    .vscode {
+      --terminal: #1a1a1a;
+      --cursor: #e6e6e6;
+      --selection: #343842;
+      border: 1px solid #ffffff24;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #1a1a1a;
+      --bg: #1a1a1a;
+      --side: #1a1a1a;
+      --activity: #1a1a1a;
+      --panel: #1a1a1a;
+      --title: #1a1a1a;
+      --status: #1a1a1a;
+      --fg: #e6e6e6;
+      --line: #555b66;
+      --active-line: #c8a7f0;
+      --selection: #343842;
+      --highlight: #191c21;
+      --cursor: #e6e6e6
+    }
+
+    .vs-titlebar {
+      height: 15px;
+      background: var(--title);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ffffff1a;
+      padding: 0 10px;
+      font: 11px system-ui;
+      color: #aeb0bb
+    }
+
+    .traffic {
+      display: flex;
+      gap: 7px
+    }
+
+    .traffic i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fa696d
+    }
+
+    .traffic i:nth-child(2) {
+      background: #f2bc4d
+    }
+
+    .traffic i:nth-child(3) {
+      background: #4dc374
+    }
+
+    .titlecenter {
+      display: flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .titlecenter span {
+      color: #8a8e9d
+    }
+
+    .vs-main {
+      display: flex;
+      height: 630px;
+      min-width: 0
+    }
+
+    .activity {
+      flex: none;
+      width: 34px;
+      ;
+      gap: 18px;
+      background: var(--activity);
+      border-right: 1px solid #ffffff1a;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 12px;
+      color: #8c90a1;
+      font-size: 16px
+    }
+
+    .activity .selected {
+      color: #e0c2ff;
+      position: relative
+    }
+
+    .activity .selected:before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #b998e4
+    }
+
+    .activity .bottom {
+      margin-top: auto;
+      margin-bottom: 18px
+    }
+
+    .sidebar {
+      width: 126px;
+      flex: none;
+      background: var(--side);
+      border-right: 1px solid #ffffff15;
+      color: #bbbcc6;
+      font-size: 11px;
+      padding: 16px 8px
+    }
+
+    .side-title {
+      font-size: 10px;
+      letter-spacing: .08em;
+      margin: 0 9px 23px;
+      color: #c6c7d3
+    }
+
+    .side-group {
+      font-size: 10px;
+      font-weight: 650;
+      margin-bottom: 11px
+    }
+
+    .file {
+      padding: 6px 12px;
+      color: #aaaebc
+    }
+
+    .file.active {
+      background: #ffffff12;
+      color: #e6e7ee
+    }
+
+    .file .py {
+      color: #b1647e
+    }
+
+    .file .json {
+      color: #aeaa98
+    }
+
+    .file.indent {
+      padding-left: 23px
+    }
+
+    .file[data-editor-file] {
+      cursor: pointer
+    }
+
+    .file[data-editor-file]:hover:not(.active) {
+      background: #ffffff0b
+    }
+
+    .vscode-editor {
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg)
+    }
+
+    .tabbar {
+      height: 27px;
+      background: var(--title);
+      border-bottom: 1px solid #ffffff13;
+      display: flex;
+      align-items: stretch;
+      flex: none
+    }
+
+    .tab {
+      padding: 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10px;
+      border: 0;
+      border-right: 1px solid #ffffff12;
+      color: #c7c7d2;
+      background: transparent;
+      cursor: pointer
+    }
+
+    .tab:hover:not(.active) {
+      background: #ffffff0b
+    }
+
+    .tab.active {
+      border-top: 1px solid #c7a5ef;
+      background: var(--bg);
+      color: #ece9f2
+    }
+
+    .tab .dot {
+      width: 6px;
+      height: 6px;
+      background: #d0adc4;
+      border-radius: 50%
+    }
+
+    .codearea {
+      padding-top: 17px;
+      overflow: auto;
+      flex: 1
+    }
+
+    .code-line {
+      display: flex;
+      min-width: max-content;
+      padding-right: 16px;
+      font: 12px/1.75 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      white-space: pre;
+      color: var(--fg)
+    }
+
+    .code-line.current,
+    .code-line:focus-within {
+      background: var(--highlight)
+    }
+
+    .line-num {
+      display: inline-block;
+      width: 42px;
+      text-align: right;
+      flex: none;
+      padding-right: 16px;
+      color: var(--line);
+      user-select: none
+    }
+
+    .current .line-num {
+      color: var(--active-line)
+    }
+
+    .line-code {
+      white-space: pre;
+      min-width: 0;
+      outline: none;
+      caret-color: var(--cursor);
+      cursor: text
+    }
+
+    .line-code::selection,
+    .line-code *::selection {
+      background: var(--selection);
+      color: inherit
+    }
+
+    .line-code:focus {
+      outline: none
+    }
+
+    .vs-panel {
+      height: 91px;
+      background: var(--panel);
+      border-top: 1px solid #ffffff1e;
+      color: #9d9faa;
+      flex: none;
+      display: flex;
+      flex-direction: column
+    }
+
+    .panel-tabs {
+      font-size: 10px;
+      display: flex;
+      gap: 20px;
+      padding: 8px 15px 0;
+      min-height: 36px
+    }
+
+    .terminal-lines {
+      flex: 1;
+      background: var(--terminal);
+      padding: 7px 15px
+    }
+
+    .panel-tabs .active {
+      color: #ecedf5;
+      border-bottom: 1px solid #ca9eff;
+      padding-bottom: 7px
+    }
+
+    .terminal-line {
+      font: 11px/1.7 "SFMono-Regular", Consolas, monospace;
+      color: #aeb0c0
+    }
+
+    .terminal-line strong {
+      color: #b1647e;
+      font-weight: 600
+    }
+
+    .vs-status {
+      height: 25px;
+      background: var(--status);
+      border-top: 1px solid #ffffff24;
+      color: #bcbfce;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 11px
+    }
+
+    .preview-control {
+      display: flex;
+      gap: 11px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 16px
+    }
+
+    .segmented {
+      display: inline-flex;
+      padding: 4px;
+      gap: 3px;
+      border-radius: 9px;
+      background: #10121a;
+      border: 1px solid #ffffff1c
+    }
+
+    .segmented button {
+      padding: 7px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      border: 0;
+      background: transparent;
+      color: #8f91a4;
+      border-radius: 6px
+    }
+
+    .segmented button.active {
+      background: #363047;
+      color: #f1e6fc
+    }
+
+    .note {
+      font-size: 11px;
+      color: #999aac;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .panel-desc {
+      font-size: 12px;
+      line-height: 1.6;
+      color: #a1a1b3;
+      margin: -4px 0 15px
+    }
+
+    .presets {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px
+    }
+
+    .preset {
+      padding: 13px;
+      border: 1px solid #ffffff24;
+      background: #20232d;
+      color: #eae4f0;
+      border-radius: 10px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 12px;
+      font-weight: 650
+    }
+
+    .preset:hover {
+      border-color: #bba4d8
+    }
+
+    .preset.active {
+      border-color: #cc9df5;
+      background: #302638
+    }
+
+    .dots {
+      display: flex;
+      gap: 5px
+    }
+
+    .dots i {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 1px solid #ffffff33
+    }
+
+    .groups {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap
+    }
+
+    .groups button {
+      border-radius: 8px;
+      border: 1px solid #ffffff23;
+      background: #20222c;
+      color: #b8b8c6;
+      font-size: 11px;
+      padding: 9px 11px
+    }
+
+    .groups button.active {
+      border-color: #b693df;
+      background: #342a41;
+      color: #f2e7ff
+    }
+
+    .color-list {
+      display: grid;
+      gap: 8px;
+      max-height: 548px;
+      overflow: auto;
+      padding-right: 2px
+    }
+
+    .color-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 65px 100px;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 10px;
+      background: #20232d;
+      border: 1px solid #ffffff10;
+      border-radius: 9px
+    }
+
+    .color-name {
+      min-width: 0;
+      color: #e5e3eb;
+      font-size: 11px;
+      font-weight: 650;
+      line-height: 1.4
+    }
+
+    .color-name small {
+      display: block;
+      font: 9px/1.5 "SFMono-Regular", Consolas, monospace;
+      color: #8589a0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-top: 3px
+    }
+
+    .color-input {
+      appearance: none;
+      width: 65px;
+      height: 32px;
+      padding: 0;
+      border: 1px solid #ffffff63;
+      border-radius: 6px;
+      background: transparent;
+      cursor: pointer
+    }
+
+    .color-input::-webkit-color-swatch-wrapper {
+      padding: 0
+    }
+
+    .color-input::-webkit-color-swatch {
+      border: none;
+      border-radius: 5px
+    }
+
+    .hex-input {
+      min-width: 0;
+      width: 100%;
+      background: #10131a;
+      border: 1px solid #ffffff2b;
+      border-radius: 6px;
+      padding: 9px 7px;
+      color: #e4e4ee;
+      font: 10px "SFMono-Regular", Consolas, monospace;
+      text-transform: uppercase;
+      letter-spacing: 0
+    }
+
+    .outputbox {
+      background: #0d0f15;
+      border: 1px solid #ffffff20;
+      border-radius: 10px;
+      overflow: auto;
+      max-height: 290px
+    }
+
+    .outputbox pre {
+      margin: 0;
+      padding: 16px;
+      font: 10.5px/1.7 "SFMono-Regular", Consolas, monospace;
+      color: #d4d5e3;
+      white-space: pre
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 14px
+    }
+
+    .button {
+      border: 1px solid #ffffff2a;
+      border-radius: 8px;
+      background: #252838;
+      color: #f0e9f4;
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 12px
+    }
+
+    .button.primary {
+      background: linear-gradient(95deg, #d9b5f8, #ffb8d2);
+      border: none;
+      color: #211525
+    }
+
+    .button:hover {
+      filter: brightness(1.12)
+    }
+
+    .message {
+      min-height: 14px;
+      margin-top: 10px;
+      color: #bfa6e0;
+      font-size: 11px
+    }
+
+    .setup-instructions {
+      display: grid;
+      gap: 16px
+    }
+
+    .setup-step {
+      display: flex;
+      gap: 13px;
+      align-items: flex-start
+    }
+
+    .setup-index {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      background: #3b2d49;
+      color: #e5c6ff;
+      font-size: 11px;
+      font-weight: 750
+    }
+
+    .setup-step strong {
+      font-size: 12px;
+      color: #e6e1ee
+    }
+
+    .setup-step p {
+      color: #a8a9bb;
+      font-size: 12px;
+      line-height: 1.6;
+      margin: 5px 0 0
+    }
+
+    .setup-step kbd {
+      display: inline-block;
+      border: 1px solid #ffffff27;
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: #e3dcec;
+      font: 11px system-ui;
+      background: #252631
+    }
+
+    .settings-command {
+      margin-top: 9px;
+      background: #0c0f15;
+      border: 1px solid #ffffff24;
+      border-radius: 8px;
+      padding: 10px 8px 10px 12px;
+      color: #d1bfed;
+      font: 11px/1.6 'SFMono-Regular', Consolas, monospace;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px
+    }
+
+    .settings-command button {
+      background: transparent;
+      border: 1px solid #ffffff1f;
+      color: #b4a9c3;
+      border-radius: 6px;
+      min-width: 28px;
+      height: 27px;
+      cursor: pointer
+    }
+
+    .settings-command button:hover {
+      color: #fff;
+      background: #ffffff12
+    }
+
+    .footer {
+      border-top: 1px solid #ffffff15;
+      text-align: center;
+      margin-top: 38px;
+      padding-top: 22px;
+      color: #8b899e;
+      font-size: 12px
+    }
+
+    @media(max-width:1080px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr)
+      }
+
+      .shell {
+        max-width: 840px
+      }
+
+      .color-list {
+        max-height: 440px
+      }
+    }
+
+    @media(max-width:600px) {
+      .shell {
+        width: calc(100% - 28px)
+      }
+
+      .hero {
+        padding-top: 35px
+      }
+
+      .pad {
+        padding: 15px
+      }
+
+      .sidebar {
+        width: 110px
+      }
+
+      .activity {
+        width: 33px
+      }
+
+      .vs-main {
+        height: 355px
+      }
+
+      .code-line {
+        font-size: 10px
+      }
+
+      .line-num {
+        width: 29px;
+        padding-right: 9px
+      }
+
+      .color-item {
+        grid-template-columns: minmax(0, 1fr) 52px 87px;
+        gap: 6px
+      }
+
+      .color-input {
+        width: 52px
+      }
+
+      .brand small {
+        display: none
+      }
+
+      .titlecenter {
+        font-size: 9px
+      }
+
+      .sidebar .file {
+        padding-left: 5px
+      }
+    }
+
+    .vs-main {
+      height: 530px
+    }
+
+    .sidebar {
+      width: 110px;
+      padding: 5px 4px
+    }
+
+    .side-title {
+      margin: 0 3px 12px
+    }
+
+    .file {
+      padding: 6px 7px;
+      white-space: nowrap
+    }
+
+    .file.indent {
+      padding-left: 13px
+    }
+
+    .codearea {
+      padding-top: 15px
+    }
+
+    .code-line {
+      font-size: 11px;
+      line-height: 1.7
+    }
+
+    .vs-panel {
+      height: 102px
+    }
+
+    .color-item {
+      grid-template-columns: minmax(0, 1fr) 70px 108px
+    }
+
+    .color-input {
+      width: 70px;
+      height: 30px;
+      background: #23202b;
+      border: 1px solid #ffffff63;
+      border-radius: 7px;
+      padding: 0;
+      box-shadow: inset 0 0 0 1px #00000021
+    }
+
+    .color-input:hover {
+      outline: 2px solid #d4b1fa88;
+      outline-offset: 2px
+    }
+
+    .picker-popover {
+      position: fixed;
+      z-index: 200;
+      width: min(330px, calc(100vw - 24px));
+      padding: 14px;
+      border: 1px solid #ffffff35;
+      border-radius: 15px;
+      background: #242630;
+      box-shadow: 0 18px 65px #000b
+    }
+
+    .picker-popover[hidden] {
+      display: none
+    }
+
+    .picker-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px
+    }
+
+    .picker-name {
+      font-size: 12px;
+      font-weight: 700
+    }
+
+    .picker-close {
+      border: 0;
+      background: #ffffff16;
+      color: #dadbe4;
+      border-radius: 7px;
+      width: 27px;
+      height: 27px;
+      font-size: 18px;
+      line-height: 1
+    }
+
+    .picker-controls {
+      display: flex;
+      gap: 11px;
+      height: 212px
+    }
+
+    .sv-area {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      border: 1px solid #ffffff24;
+      border-radius: 7px;
+      cursor: crosshair;
+      touch-action: none;
+      background-image: linear-gradient(to top, #000, transparent), linear-gradient(to right, #fff, transparent)
+    }
+
+    .sv-handle {
+      position: absolute;
+      height: 13px;
+      width: 13px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px #0008, 0 1px 5px #000b;
+      transform: translate(-50%, -50%);
+      pointer-events: none
+    }
+
+    .hue-area {
+      position: relative;
+      width: 25px;
+      flex-shrink: 0;
+      border: 1px solid #ffffff25;
+      border-radius: 6px;
+      cursor: ns-resize;
+      touch-action: none;
+      background: linear-gradient(to bottom, #f00 0%, #ff0 16.667%, #0f0 33.333%, #0ff 50%, #00f 66.667%, #f0f 83.333%, #f00 100%)
+    }
+
+    .hue-handle {
+      position: absolute;
+      left: -3px;
+      width: calc(100% + 6px);
+      height: 8px;
+      border: 2px solid #fff;
+      border-radius: 3px;
+      box-shadow: 0 0 0 1px #0008;
+      transform: translateY(-50%);
+      pointer-events: none
+    }
+
+    .picker-bottom {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 13px 0 10px
+    }
+
+    .picker-current {
+      width: 34px;
+      height: 34px;
+      border: 1px solid #ffffff4d;
+      border-radius: 7px;
+      flex-shrink: 0
+    }
+
+    .picker-hex {
+      flex: 1;
+      width: 100%;
+      background: #10131a;
+      border: 1px solid #ffffff30;
+      border-radius: 7px;
+      padding: 8px 10px;
+      font: 12px "SFMono-Regular", Consolas, monospace;
+      color: #f3f0f7;
+      text-transform: uppercase
+    }
+
+    .picker-rgb {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px
+    }
+
+    .picker-rgb label {
+      display: grid;
+      gap: 4px;
+      color: #989bad;
+      font-size: 10px
+    }
+
+    .picker-rgb input {
+      min-width: 0;
+      width: 100%;
+      background: #10131a;
+      border: 1px solid #ffffff30;
+      border-radius: 6px;
+      padding: 7px 6px;
+      color: #f3f0f7;
+      font: 12px "SFMono-Regular", Consolas, monospace
+    }
+
+    @media(max-width:600px) {
+      .sidebar {
+        width: 90px
+      }
+
+      .vs-main {
+        height: 560px
+      }
+
+      .code-line {
+        font-size: 10px
+      }
+
+      .color-item {
+        grid-template-columns: minmax(0, 1fr) 52px 87px
+      }
+
+      .color-input {
+        width: 52px
+      }
+    }
+
+    @media(max-width:940px) {
+      .hero {
+        padding-top: 38px
+      }
+    }
+
+    @media(max-width:480px) {
+      .topbar {
+        height: 68px
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="mark">MI77-LAB</span><span>Editor Studio <small>/ MI77-Themes</small></span></div>
+      <div class="studios"><button id="studiosButton" class="studio-menu" type="button" aria-expanded="false">Studios
+          <span>⌄</span></button>
+        <div id="studioDropdown" class="dropdown" hidden><span class="current">VS Code ✓</span><a
+            href="https://mirabelleding.github.io/MI77-ThemesStudio/terminal/">Terminal</a></div>
+      </div>
+    </header>
+    <section class="hero">
+      <p class="eyebrow">EDITOR / COLOUR STUDIO</p>
+      <h1>Your editor.<br><em>Your colours.</em></h1>
+      <p class="subtitle">Customize VS Code workbench and Python syntax colours, preview them in a simulated editor, and
+        export ready-to-use settings JSON.</p>
+    </section>
+    <main class="layout">
+      <div class="stack">
+        <section class="panel pad">
+          <div class="panel-heading">
+            <h2>Live preview</h2><span class="pill" id="previewMode">Python · VS Code</span>
+          </div>
+          <div class="vscode" id="vscode">
+            <div class="vs-titlebar">
+              <div class="traffic"><i></i><i></i><i></i></div>
+              <div class="titlecenter">MI77-LAB <span>— Visual Studio Code</span></div><span>⌕</span>
+            </div>
+            <div class="vs-main">
+              <div class="activity"><span class="selected">▤</span><span>⌕</span><span>⑂</span><span>▧</span><span
+                  class="bottom">⚙</span></div>
+              <div class="sidebar">
+                <div class="side-title">EXPLORER</div>
+                <div class="side-group">⌄ MI77-LAB</div>
+                <div class="file active" role="button" tabindex="0" data-editor-file="python"><span class="py">◆</span>
+                  main.py</div>
+                <div class="file"><span class="py">◆</span> utils.py</div>
+                <div class="file" role="button" tabindex="0" data-editor-file="markdown">▤ doc.md</div>
+                <div class="file" role="button" tabindex="0" data-editor-file="settings"><span class="json">{ }</span>
+                  settings.json</div>
+              </div>
+              <div class="vscode-editor">
+                <div class="tabbar"><button type="button" class="tab active" data-editor-file="python"
+                    aria-pressed="true"><span style="color:#b1647e">◆</span> main.py</button><button type="button"
+                    class="tab" data-editor-file="markdown" aria-pressed="false"><span style="color:#aac7ef">▤</span>
+                    doc.md</button><button type="button" class="tab" data-editor-file="settings"
+                    aria-pressed="false"><span style="color:#b6b3a3">{ }</span> settings.json</button></div>
+                <div class="codearea" id="codeArea"></div>
+                <div class="vs-panel">
+                  <div class="panel-tabs"><span>PROBLEMS</span><span>OUTPUT</span><span class="active">TERMINAL</span>
+                  </div>
+                  <div class="terminal-lines">
+                    <div class="terminal-line"><strong>~/MI77-LAB</strong> $ python main.py</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="vs-status"><span>⑂ main &nbsp; ✓ 0 &nbsp; ⚠ 0</span><span id="editorStatus">Ln 8, Col 12 &nbsp;
+                UTF-8 &nbsp; Python</span></div>
+          </div>
+        </section>
+        <section class="panel pad">
+          <div class="panel-heading">
+            <h2>VS Code Configuration</h2><span class="pill">settings.json</span>
+          </div>
+          <div class="outputbox">
+            <pre id="jsonOutput"></pre>
+          </div>
+          <div class="buttons"><button class="button primary" id="copy">Copy configuration</button><button
+              class="button" id="download">Download JSON</button></div>
+          <div class="message" id="message" role="status"></div>
+        </section>
+        <section class="panel pad">
+          <div class="panel-heading">
+            <h2>Apply Configuration</h2>
+          </div>
+          <div class="setup-instructions">
+            <div class="setup-step"><span class="setup-index">1</span>
+              <div><strong>Open the Command Palette</strong>
+                <p>Press <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on macOS, or <kbd>Ctrl</kbd> + <kbd>Shift</kbd>
+                  + <kbd>P</kbd> on Windows / Linux.</p>
+              </div>
+            </div>
+            <div class="setup-step"><span class="setup-index">2</span>
+              <div><strong>Open User Settings (JSON)</strong>
+                <p>Search for and select:</p>
+                <div class="settings-command">Preferences: Open User Settings (JSON) <button type="button"
+                    id="copySettingsCommand" aria-label="Copy Command Palette command" title="Copy command">▢</button>
+                </div>
+              </div>
+            </div>
+            <div class="setup-step"><span class="setup-index">3</span>
+              <div><strong>Integrate your colour configuration</strong>
+                <p>Copy the generated JSON above and merge its colour customization properties into your existing
+                  <code>settings.json</code>. Keep your other settings intact.</p>
+              </div>
+            </div>
+          </div>
+          <p class="note" style="margin-top:15px">If a token does not update, use <strong>Developer: Inspect Editor
+              Tokens and Scopes</strong> to check its token type and scope.</p>
+        </section>
+      </div>
+      <div class="stack">
+        <section class="panel pad">
+          <div class="panel-heading">
+            <h2>Themes</h2><span class="muted">Presets</span>
+          </div>
+          <div class="presets" id="presets"></div>
+        </section>
+        <section class="panel pad">
+          <div class="panel-heading">
+            <h2>Customize Individual Colours</h2><span class="pill" id="count">13 colours</span>
+          </div>
+          <p class="panel-desc">Choose a category and select a colour using the gradient picker or a HEX value.</p>
+          <div class="groups" id="groups"><button class="active" data-group="syntax">Python syntax</button><button
+              data-group="fallback">TextMate</button><button data-group="workbench">Workbench</button></div>
+          <p class="note" id="semanticNote">Python semantic rules take precedence when applicable. TextMate colours
+            handle grammar-based highlighting, including Python code fences in Markdown.</p>
+          <div class="color-list" id="colorList"></div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">mirabelleding@MI77-LAB</footer>
+  </div>
+  <div id="pickerPanel" class="picker-popover" role="dialog" aria-label="Colour picker" hidden>
+    <div class="picker-top"><span id="pickerName" class="picker-name">Colour picker</span><button id="pickerClose"
+        class="picker-close" type="button" aria-label="Close colour picker">×</button></div>
+    <div class="picker-controls">
+      <div id="svArea" class="sv-area" role="group" tabindex="0"
+        aria-label="Saturation and brightness. Left and right arrows change saturation, up and down arrows change brightness.">
+        <span id="svHandle" class="sv-handle"></span></div>
+      <div id="hueArea" class="hue-area" role="slider" tabindex="0" aria-label="Hue" aria-orientation="vertical"
+        aria-valuemin="0" aria-valuemax="360" aria-valuenow="0"><span id="hueHandle" class="hue-handle"></span></div>
+    </div>
+    <div class="picker-bottom"><span id="pickerCurrent" class="picker-current"></span><input id="pickerHex"
+        class="picker-hex" aria-label="HEX colour" maxlength="9" spellcheck="false"></div>
+    <div class="picker-rgb"><label>Red<input id="pickerR" type="number" min="0" max="255"
+          aria-label="Red channel"></label><label>Green<input id="pickerG" type="number" min="0" max="255"
+          aria-label="Green channel"></label><label>Blue<input id="pickerB" type="number" min="0" max="255"
+          aria-label="Blue channel"></label></div>
+  </div>
+  <script>
+    const deepClone = o => JSON.parse(JSON.stringify(o));
+    const workbench = {
+      'editor.background': '#1a1a1a', 'sideBar.background': '#1a1a1a', 'activityBar.background': '#1a1a1a', 'panel.background': '#1a1a1a', 'terminal.background': '#1a1a1a', 'titleBar.activeBackground': '#1a1a1a', 'statusBar.background': '#1a1a1a', 'editor.foreground': '#E6E6E6', 'editorLineNumber.foreground': '#555B66', 'editorLineNumber.activeForeground': '#C8A7F0', 'editorCursor.foreground': '#E6E6E6', 'editor.selectionBackground': '#343842', 'editor.lineHighlightBackground': '#191C21'
+    };
+    const syntax = { namespace: '#c3a5ff', 'class.typeHint:python': '#98eae2', class: '#fca875', function: '#c3a5ff', member: '#c3a5ff', property: '#c3a5ff', parameter: '#fbdef3', selfParameter: '#ffb98e', clsParameter: '#fbdef3', variable: '#ffe5f8', 'variable.readonly': '#7aafff', '*.decorator': '#94bfff', keyword: '#F0A6CA', number: '#F0A6CA' };
+    const fallback = { Comments: '#777777', Strings: '#c0d8ed', Docstrings: '#a9d5fa', Keywords: '#F0A6CA', Numbers: '#F0A6CA', Builtins: '#7FDBCA', 'Decorators': '#94bfff', 'Function calls': '#c0a4fa', Namespace: '#C3A5FF', Class: '#FCA875', 'Class Attribute': '#ffb98e' };
+    const palette = { workbench, syntax, fallback };
+    const presets = [{ name: 'MI77-Palette', data: palette }];
+    let state = deepClone(palette), group = 'syntax', active = 'MI77-Palette', editorFile = 'python';
+    const el = id => document.getElementById(id);
+    const fieldLabel = k => ({ 'editor.background': 'Editor background', 'sideBar.background': 'Explorer background', 'activityBar.background': 'Activity bar', 'panel.background': 'Bottom panel', 'terminal.background': 'Terminal background', 'titleBar.activeBackground': 'Title bar', 'statusBar.background': 'Status bar', 'editor.foreground': 'Editor text', 'editorLineNumber.foreground': 'Line numbers', 'editorLineNumber.activeForeground': 'Active line number', 'editorCursor.foreground': 'Cursor', 'editor.selectionBackground': 'Selection', 'editor.lineHighlightBackground': 'Current line', 'class.typeHint:python': 'Class type hint', 'selfParameter': 'self parameter', 'clsParameter': 'cls parameter', 'variable.readonly': 'Readonly variable', '*.decorator': 'Decorator', member: 'Methods & members', property: 'Properties' })[k] || k.replace(/\b\w/g, c => c.toUpperCase());
+    function isHex(value) { return /^#[a-f0-9]{6}(?:[a-f0-9]{2})?$/i.test(value) }
+    function setVar(name, value) { el('vscode').style.setProperty(name, value) }
+    function liveColour(key, fallback = '#e6e6e6') { return state.syntax[key] || state.fallback[key] || fallback }
+    function renderEditor() {
+      const wb = state.workbench;
+      [['--bg', wb['editor.background']], ['--side', wb['sideBar.background']], ['--activity', wb['activityBar.background']], ['--panel', wb['panel.background']], ['--terminal', wb['terminal.background']], ['--title', wb['titleBar.activeBackground']], ['--status', wb['statusBar.background']], ['--fg', wb['editor.foreground']], ['--line', wb['editorLineNumber.foreground']], ['--active-line', wb['editorLineNumber.activeForeground']], ['--selection', wb['editor.selectionBackground']], ['--highlight', wb['editor.lineHighlightBackground']], ['--cursor', wb['editorCursor.foreground']]].forEach(([k, v]) => setVar(k, v));
+      const esc = text => String(text).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+      const resolve = (type) => {
+        if (type === 'string') return state.fallback.Strings || wb['editor.foreground'];
+        if (type === 'comment') return state.fallback.Comments || wb['editor.foreground'];
+        if (type === 'typehint') return state.syntax['class.typeHint:python'] || state.syntax.class || wb['editor.foreground'];
+        if (type === 'decoratorAt') return state.fallback['Decorators'] || state.syntax['*.decorator'] || wb['editor.foreground'];
+        return state.syntax[type] || wb['editor.foreground'];
+      };
+      const K = (type, text) => `<span data-token="${type}">${esc(text)}</span>`;
+      const kw = x => K('keyword', x), ns = x => K('namespace', x), cls = x => K('class', x), fn = x => K('function', x), method = x => K('member', x), prop = x => K('property', x), param = x => K('parameter', x), self = x => K('selfParameter', x), v = x => K('variable', x), hint = x => K('typehint', x), str = x => K('string', x), num = x => K('number', x), dec = x => K('*.decorator', x), at = x => K('decoratorAt', x), comment = x => K('comment', x), op = x => K('operator', x);
+      const lines = [
+        `${kw('import')} ${ns('multiprocessing')} ${kw('as')} ${ns('mp')}`,
+        `${kw('from')} ${ns('collections.abc')} ${kw('import')} ${cls('Sequence')}`,
+        `${kw('from')} ${ns('typing')} ${kw('import')} ${cls('Any')}`,
+        '',
+        `${kw('from')} ${ns('utils')} ${kw('import')} ${fn('some_magic')}`,
+        '',
+        `${comment('# savoir ce que tu veux.')}`,
+        `${kw('class')} ${cls('MI77')}:`,
+        `    ${kw('def')} ${fn('__init__')}(${self('self')}, ${param('lab')}: ${hint('object')}):`,
+        `        ${self('self')}.${prop('lab')} ${op('=')} ${param('lab')}`,
+        '',
+        `    ${at('@')}${dec('staticmethod')}`,
+        `    ${kw('def')} ${fn('inspirations')}() ${op('->')} ${hint('Any')}:`,
+        `        ${kw('return')} ${str('"logic with serendipites."')}`,
+        '',
+        `    ${kw('def')} ${fn('experiments')}(${self('self')}) ${op('->')} ${hint('Sequence')}[${hint('Any')}]:`,
+        `        ${kw('with')} ${ns('mp')}.${cls('Pool')}(${param('processes')}${op('=')}${num('7')}) ${kw('as')} ${v('pool')}:`,
+        `            ${v('experimentations')} ${op('=')} ${v('pool')}.${method('map')}(`,
+        `                ${fn('some_magic')}, ${self('self')}.${prop('lab')}`,
+        `            )`,
+        `        ${kw('return')} ${v('experimentations')}`
+      ];
+      const generic = wb['editor.foreground'];
+      const resolveMarkdown = (type, text, index) => {
+        if (type === 'comment') return state.fallback.Comments || generic;
+        if (type === 'keyword') return state.fallback.Keywords || generic;
+        if (type === 'string') return state.fallback.Strings || generic;
+        if (type === 'number') return state.fallback.Numbers || generic;
+        if (type === 'decoratorAt' || type === '*.decorator') return state.fallback['Decorators'] || generic;
+        if (type === 'selfParameter') return state.fallback['Class Attribute'] || generic;
+        if (type === 'typehint') return state.fallback.Builtins || generic;
+        if (type === 'class') return index < 3 ? generic : (state.fallback.Class || generic);
+        if (type === 'function' || type === 'member') return state.fallback['Function calls'] || generic;
+        if (type === 'namespace') return generic;
+        return generic;
+      };
+      const markdownLines = [
+        '<span class="fence">&#96;&#96;&#96;python</span>',
+        ...lines.map((line, i) => line.replace(/<span data-token="([^"]+)">([\s\S]*?)<\/span>/g, (match, type, text) => `<span data-md-token="${type}" data-source-line="${i}">${text}</span>`)),
+        '<span class="fence">&#96;&#96;&#96;</span>'
+      ];
+      const inMarkdown = editorFile === 'markdown';
+      const inSettings = editorFile === 'settings';
+      const displayLines = inSettings ? generate().split('\n').map(esc) : (inMarkdown ? markdownLines : lines);
+      if (el('codeArea').dataset.initialized !== editorFile || inSettings) {
+        el('codeArea').innerHTML = displayLines.map((line, i) => `<div class="code-line ${i === (inMarkdown ? 17 : 16) ? 'current' : ''}"><span class="line-num">${i + 1}</span><span class="line-code" contenteditable="true" spellcheck="false" aria-label="Editable ${inSettings ? 'JSON' : (inMarkdown ? 'Markdown' : 'Python')} sample line ${i + 1}">${line || ' '}</span></div>`).join('');
+        el('codeArea').dataset.initialized = editorFile;
+        if (!el('codeArea').dataset.eventsAttached) {
+          el('codeArea').addEventListener('focusin', event => {
+            const line = event.target.closest('.code-line');
+            if (line) { el('codeArea').querySelectorAll('.current').forEach(node => node.classList.remove('current')); line.classList.add('current'); }
+          });
+          el('codeArea').dataset.eventsAttached = 'true';
+        }
+      }
+      el('codeArea').querySelectorAll('[data-token]').forEach(node => { node.style.color = resolve(node.dataset.token) });
+      el('codeArea').querySelectorAll('[data-md-token]').forEach(node => {
+        node.style.color = resolveMarkdown(node.dataset.mdToken, node.textContent, Number(node.dataset.sourceLine));
+      });
+      el('codeArea').querySelectorAll('.fence').forEach(node => { node.style.color = generic });
+    }
+    const formatKey = k => state.syntax[k];
+    const fallbackScopes = { Comments: ['comment', 'punctuation.definition.comment'], Strings: ['string', 'string.quoted.single', 'string.quoted.double', 'string.quoted.docstring'], Docstrings: ['string.quoted.docstring'], Keywords: ['keyword', 'storage.type', 'storage.modifier', 'keyword.control', 'keyword.other'], Numbers: 'constant.numeric', Builtins: ['support.type.python'], 'Decorators': ['punctuation.definition.decorator.python', 'meta.function.decorator.python', 'meta.function.decorator.python support.type.python', 'entity.name.function.decorator.python'], 'Function calls': ['support.function.builtin', 'meta.function-call.python', 'entity.name.function.python'], Namespace: ['entity.name.type.namespace'], Class: ['entity.name.type.class', 'entity.other.inherited-class.python'], 'Class Attribute': ['variable.language.special.self.python'] };
+    function generate() {
+      const colorRules = {}; Object.keys(state.syntax).forEach(k => { colorRules[k] = formatKey(k) });
+      const textMateRules = Object.keys(state.fallback).map(k => ({ name: k, scope: fallbackScopes[k], settings: { foreground: state.fallback[k] } }));
+      return JSON.stringify({ 'workbench.colorCustomizations': state.workbench, 'editor.semanticHighlighting.enabled': true, 'editor.semanticTokenColorCustomizations': { enabled: true, rules: colorRules }, 'editor.tokenColorCustomizations': { textMateRules } }, null, 2);
+    }
+    function renderOutput() { renderEditor(); el('jsonOutput').textContent = generate() }
+    function setEditorFile(file) {
+      if (file !== editorFile) { editorFile = file; el('codeArea').scrollTop = 0; }
+      document.querySelectorAll('[data-editor-file]').forEach(element => {
+        const selected = element.dataset.editorFile === editorFile;
+        element.classList.toggle('active', selected);
+        if (element.tagName === 'BUTTON') element.setAttribute('aria-pressed', String(selected));
+      });
+      el('previewMode').textContent = editorFile === 'python' ? 'Python · VS Code' : editorFile === 'markdown' ? 'Markdown · Python fence' : 'JSON · Configuration';
+      el('editorStatus').innerHTML = editorFile === 'python' ? 'Ln 8, Col 12 &nbsp; UTF-8 &nbsp; Python' : editorFile === 'markdown' ? 'Ln 18, Col 8 &nbsp; UTF-8 &nbsp; Markdown' : 'UTF-8 &nbsp; JSON';
+      renderEditor();
+    }
+    function renderPresets() { el('presets').innerHTML = presets.map(p => { const cols = [p.data.syntax.keyword, p.data.syntax.function, p.data.syntax.class, p.data.fallback.Strings]; return `<button class="preset ${active === p.name ? 'active' : ''}" data-preset="${p.name}" aria-pressed="${active === p.name}">${p.name}<div class="dots">${cols.map(c => `<i style="background:${c}"></i>`).join('')}</div></button>` }).join(''); el('presets').querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => { const p = presets.find(p => p.name === b.dataset.preset); closePicker(); state = deepClone(p.data); active = p.name; renderPresets(); renderInputs(); renderOutput() })) }
+    function renderInputs() {
+      const items = Object.entries(state[group]);
+      el('count').textContent = `${items.length} colours`;
+      el('colorList').innerHTML = items.map(([key, hex]) => {
+        const encoded = encodeURIComponent(key);
+        return `<div class="color-item"><div class="color-name">${fieldLabel(key)}<small>${key}</small></div><button type="button" class="color-input" data-colour="${encoded}" aria-label="Open ${fieldLabel(key)} gradient picker" aria-haspopup="dialog" style="background-color:${hex}"></button><input class="hex-input" data-hex="${encoded}" aria-label="${fieldLabel(key)} HEX" value="${hex}" maxlength="9" spellcheck="false"></div>`;
+      }).join('');
+      el('colorList').querySelectorAll('[data-colour]').forEach(button => button.addEventListener('click', () => {
+        const key = decodeURIComponent(button.dataset.colour);
+        if (picker.key === key && picker.group === group) closePicker();
+        else openPicker(key);
+      }));
+      el('colorList').querySelectorAll('[data-hex]').forEach(input => {
+        input.addEventListener('input', () => {
+          if (isHex(input.value)) updateColour(decodeURIComponent(input.dataset.hex), input.value.toUpperCase());
+        });
+        input.addEventListener('blur', () => { input.value = state[group][decodeURIComponent(input.dataset.hex)]; });
+      });
+    }
+    function updateColour(key, hex, updateHsv = true) {
+      state[group][key] = hex;
+      active = '';
+      renderPresets();
+      const name = encodeURIComponent(key);
+      const input = el('colorList').querySelector(`[data-hex="${name}"]`);
+      const swatch = el('colorList').querySelector(`[data-colour="${name}"]`);
+      if (input && input !== document.activeElement) input.value = hex;
+      if (swatch) swatch.style.backgroundColor = hex;
+      renderOutput();
+      if (picker.key === key && picker.group === group) {
+        if (updateHsv) {
+          const [h, s, v] = rgbToHsv(toRgb(hex));
+          if (s > 0) picker.h = h;
+          picker.s = s;
+          picker.v = v;
+        }
+        updatePicker(!updateHsv);
+      }
+    }
+    const toRgb = hex => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+    const fromRgb = rgb => '#' + rgb.map(v => Math.min(255, Math.max(0, Number(v) || 0)).toString(16).padStart(2, '0')).join('').toUpperCase();
+    const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+    const rgbToHsv = ([r, g, b]) => {
+      r /= 255; g /= 255; b /= 255;
+      const max = Math.max(r, g, b), min = Math.min(r, g, b), d = max - min;
+      let h = 0;
+      if (d !== 0) {
+        if (max === r) h = ((g - b) / d) % 6;
+        else if (max === g) h = (b - r) / d + 2;
+        else h = (r - g) / d + 4;
+        h = (h * 60 + 360) % 360;
+      }
+      return [h, max === 0 ? 0 : d / max, max];
+    };
+    const hsvToRgb = (h, s, v) => {
+      const c = v * s, x = c * (1 - Math.abs((h / 60) % 2 - 1)), m = v - c;
+      let rgb;
+      if (h < 60) rgb = [c, x, 0];
+      else if (h < 120) rgb = [x, c, 0];
+      else if (h < 180) rgb = [0, c, x];
+      else if (h < 240) rgb = [0, x, c];
+      else if (h < 300) rgb = [x, 0, c];
+      else rgb = [c, 0, x];
+      return rgb.map(n => Math.round((n + m) * 255));
+    };
+    const picker = { key: null, group: null, h: 0, s: 0, v: 0 };
+    const pickerColor = () => state[picker.group][picker.key];
+    function updatePicker(force = false) {
+      if (!picker.key) return;
+      el('svArea').style.backgroundColor = `hsl(${picker.h} 100% 50%)`;
+      el('svHandle').style.left = `${picker.s * 100}%`;
+      el('svHandle').style.top = `${(1 - picker.v) * 100}%`;
+      el('hueHandle').style.top = `${picker.h / 360 * 100}%`;
+      el('hueArea').setAttribute('aria-valuenow', String(Math.round(picker.h)));
+      const hex = pickerColor();
+      el('pickerCurrent').style.backgroundColor = hex;
+      if (force || document.activeElement !== el('pickerHex')) el('pickerHex').value = hex;
+      toRgb(hex).forEach((n, i) => {
+        const input = el(['pickerR', 'pickerG', 'pickerB'][i]);
+        if (force || document.activeElement !== input) input.value = n;
+      });
+    }
+    function positionPicker() {
+      if (!picker.key) return;
+      const anchor = el('colorList').querySelector(`[data-colour="${encodeURIComponent(picker.key)}"]`);
+      if (!anchor) return;
+      const box = el('pickerPanel'), r = anchor.getBoundingClientRect();
+      const left = clamp(r.left, 12, Math.max(12, window.innerWidth - box.offsetWidth - 12));
+      const below = r.bottom + 10, above = r.top - box.offsetHeight - 10;
+      const top = below + box.offsetHeight + 12 <= window.innerHeight ? below : above >= 12 ? above : clamp(r.top, 12, Math.max(12, window.innerHeight - box.offsetHeight - 12));
+      box.style.left = `${left}px`;
+      box.style.top = `${top}px`;
+    }
+    function openPicker(key) {
+      picker.key = key;
+      picker.group = group;
+      const [h, s, v] = rgbToHsv(toRgb(pickerColor()));
+      picker.h = h; picker.s = s; picker.v = v;
+      el('pickerName').textContent = fieldLabel(key);
+      el('pickerPanel').hidden = false;
+      el('pickerHex').setAttribute('aria-label', `${fieldLabel(key)} HEX colour`);
+      updatePicker(true);
+      positionPicker();
+    }
+    function closePicker() { picker.key = null; picker.group = null; el('pickerPanel').hidden = true; }
+    function applyPicker() {
+      if (!picker.key) return;
+      const alpha = pickerColor().length === 9 ? pickerColor().slice(7) : '';
+      updateColour(picker.key, fromRgb(hsvToRgb(picker.h, picker.s, picker.v)) + alpha, false);
+    }
+    function bindGradient(element, kind) {
+      const adjust = event => {
+        if (!picker.key) return;
+        const rect = element.getBoundingClientRect();
+        if (kind === 'sv') {
+          picker.s = clamp((event.clientX - rect.left) / rect.width, 0, 1);
+          picker.v = 1 - clamp((event.clientY - rect.top) / rect.height, 0, 1);
+        } else picker.h = clamp((event.clientY - rect.top) / rect.height, 0, 1) * 359.999;
+        applyPicker();
+      };
+      element.addEventListener('pointerdown', event => {
+        if (event.button !== 0 && event.pointerType === 'mouse') return;
+        event.preventDefault();
+        element.setPointerCapture(event.pointerId);
+        adjust(event);
+      });
+      element.addEventListener('pointermove', event => {
+        if (element.hasPointerCapture(event.pointerId)) adjust(event);
+      });
+      element.addEventListener('keydown', event => {
+        const delta = event.shiftKey ? 0.1 : 0.01;
+        if (kind === 'sv') {
+          if (event.key === 'ArrowLeft') picker.s = clamp(picker.s - delta, 0, 1);
+          else if (event.key === 'ArrowRight') picker.s = clamp(picker.s + delta, 0, 1);
+          else if (event.key === 'ArrowUp') picker.v = clamp(picker.v + delta, 0, 1);
+          else if (event.key === 'ArrowDown') picker.v = clamp(picker.v - delta, 0, 1);
+          else return;
+        } else {
+          const step = event.shiftKey ? 10 : 1;
+          if (event.key === 'ArrowUp') picker.h = (picker.h - step + 360) % 360;
+          else if (event.key === 'ArrowDown') picker.h = (picker.h + step) % 360;
+          else if (event.key === 'Home') picker.h = 0;
+          else if (event.key === 'End') picker.h = 359;
+          else return;
+        }
+        event.preventDefault(); applyPicker();
+      });
+    }
+    bindGradient(el('svArea'), 'sv');
+    bindGradient(el('hueArea'), 'hue');
+    el('pickerClose').addEventListener('click', closePicker);
+    document.addEventListener('pointerdown', event => {
+      if (picker.key && !el('pickerPanel').contains(event.target) && !event.target.closest('[data-colour]')) closePicker();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && picker.key) { closePicker(); event.preventDefault(); }
+    });
+    window.addEventListener('resize', positionPicker);
+    window.addEventListener('scroll', positionPicker, true);
+    el('pickerHex').addEventListener('input', event => {
+      if (isHex(event.target.value) && picker.key) updateColour(picker.key, event.target.value.toUpperCase());
+    });
+    el('pickerHex').addEventListener('blur', () => { if (picker.key) el('pickerHex').value = pickerColor(); });
+    ['pickerR', 'pickerG', 'pickerB'].forEach((id, i) => {
+      const input = el(id);
+      input.addEventListener('input', () => {
+        if (!picker.key || input.value.trim() === '') return;
+        const rgb = toRgb(pickerColor());
+        rgb[i] = clamp(Math.round(Number(input.value) || 0), 0, 255);
+        const alpha = pickerColor().length === 9 ? pickerColor().slice(7) : '';
+        updateColour(picker.key, fromRgb(rgb) + alpha);
+      });
+      input.addEventListener('blur', () => { if (picker.key) input.value = toRgb(pickerColor())[i]; });
+    });
+    el('copySettingsCommand').addEventListener('click', async () => {
+      const button = el('copySettingsCommand');
+      const success = await copyText('Preferences: Open User Settings (JSON)');
+      if (success) { button.textContent = '✓'; setTimeout(() => button.textContent = '▢', 1200) }
+    });
+    el('groups').querySelectorAll('[data-group]').forEach(b => b.addEventListener('click', () => { closePicker(); group = b.dataset.group; el('groups').querySelectorAll('button').forEach(x => x.classList.toggle('active', x === b)); renderInputs(); if (group === 'fallback') setEditorFile('markdown'); else if (group === 'syntax') setEditorFile('python'); else renderEditor() }));
+    el('studiosButton').addEventListener('click', () => { const opened = el('studioDropdown').hidden; el('studioDropdown').hidden = !opened; el('studiosButton').setAttribute('aria-expanded', String(opened)) }); document.addEventListener('pointerdown', e => { if (!e.target.closest('.studios')) { el('studioDropdown').hidden = true; el('studiosButton').setAttribute('aria-expanded', 'false') } });
+    async function copyText(value) { try { await navigator.clipboard.writeText(value); return true } catch { const t = document.createElement('textarea'); t.value = value; t.style.position = 'fixed'; t.style.opacity = '0'; document.body.append(t); t.select(); const ok = document.execCommand('copy'); t.remove(); return ok } }
+    el('copy').addEventListener('click', async () => { el('message').textContent = await copyText(generate()) ? 'Configuration copied.' : 'Copy unavailable; select the JSON above.' });
+    el('download').addEventListener('click', () => { const blob = new Blob([generate() + '\n'], { type: 'application/json' }), url = URL.createObjectURL(blob), a = document.createElement('a'); a.href = url; a.download = 'mi77-vscode-settings.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); el('message').textContent = 'Downloaded mi77-vscode-settings.json.' });
+    document.querySelectorAll('[data-editor-file]').forEach(element => {
+      element.addEventListener('click', () => setEditorFile(element.dataset.editorFile));
+      if (element.tagName !== 'BUTTON') element.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setEditorFile(element.dataset.editorFile) } });
+    });
+    renderPresets(); renderInputs(); setEditorFile('python'); renderOutput();
+  </script>
+</body>
+
+</html>

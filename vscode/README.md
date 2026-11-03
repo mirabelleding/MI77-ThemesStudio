@@ -1,10 +1,11 @@
 # VS Code Color Settings
 
 ## Preview
-| Themes |  |
-|----------------|----------------|
-|[MI77_palette_000](themes/palette_000.json)| <img src="pics/palette_000.png" width="300"> |
-|[MI77_palette_001](themes/palette_001.json)| <img src="pics/palette_001.png" width="300"> |
+
+**[MI77 Editor Studio](https://mirabelleding.github.io/MI77-ThemesStudio/vscode/)**
+
+A visual editor for configuring VS Code themes, featuring customizable syntax highlighting, interface colours, effect previews, and exportable theme settings.
+
 
 ## Setup
 

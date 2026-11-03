@@ -7,7 +7,7 @@ Terminal prompts can be customized using ANSI escape sequences to control text c
 
 **[MI77 Terminal Studio](https://mirabelleding.github.io/MI77-ThemesStudio/terminal/)**
 
-An interactive tool for configuring Bash prompts with customizable colors, live effect previews, and ready-to-use shell configurations.
+A Bash prompt configurator for Bash shell prompts, with customizable colors, prompt components, live previews, and exportable shell configurations.
 
 
 ## Applying the Configuration
